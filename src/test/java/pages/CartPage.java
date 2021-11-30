@@ -13,10 +13,15 @@ public class CartPage extends BasePage {
     public static final By CART_LINK_COUNT = By.xpath("//a[@class='shopping_cart_link']//span[@class='shopping_cart_badge']");
     public static final By ITEM_CART_COUNT = By.xpath("//div[@class='cart_item']");
     public static final String ITEM_CART = "//div[@class='cart_item'][%s]//div[@class='inventory_item_name']";
-    public static final String PRICE_ITEM_CART = "//div[@class='cart_item'][%s]//div[@class='inventory_item_price']";
+    public static final String PRICE_ITEM_CART = "//div[@class='inventory_item_name' and text()='%s']/../../..//div[@class='inventory_item_price']";
 
     public CartPage(WebDriver driver) {
         super(driver);
+    }
+
+    //Метод определения видимости иконки корзины на текущей странице
+    public Boolean getDisplayedCartLink() {
+        return driver.findElement(CART_LINK).isDisplayed();
     }
 
     //Метод открытия страницы cart.html
@@ -41,12 +46,12 @@ public class CartPage extends BasePage {
     }
 
     //Метод определения наименования товара в корзине
-    public String getItemNameInCart(int itemSequentialNumber) {
-        return driver.findElement(By.xpath(String.format(ITEM_CART, itemSequentialNumber))).getText();
+    public String getItemNameInCart(int itemNameInCart) {
+        return driver.findElement(By.xpath(String.format(ITEM_CART, itemNameInCart))).getText();
     }
 
     //Метод определения цены товара в корзине
-    public String getItemPriceInCart(int itemSequentialNumber) {
-        return driver.findElement(By.xpath(String.format(PRICE_ITEM_CART, itemSequentialNumber))).getText();
+    public String getItemPriceInCart(String itemNameInCart) {
+        return driver.findElement(By.xpath(String.format(PRICE_ITEM_CART, itemNameInCart))).getText();
     }
 }
