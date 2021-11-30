@@ -61,7 +61,6 @@ public class CriticalPathTest extends BaseTest {
 
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-
         //Добавлил задержку, так периодически не добавляется 4 товара, а меньше
         Thread.sleep(2000);
         inventoryPage.addToCart(itemName1);
@@ -73,10 +72,38 @@ public class CriticalPathTest extends BaseTest {
         inventoryPage.addToCart(itemName4);
 
         cartPage.openCartPage();
-
-        //System.out.println(cartPage.getCartLinkCount());
-        //System.out.println(cartPage.getItemsCountInCart());
+        System.out.println(cartPage.getCartLinkCount());
+        System.out.println(cartPage.getItemsCountInCart());
         Assert.assertEquals(cartPage.getCartLinkCount(), Integer.toString(itemsSelectedCount), "Выбранное руками количество товара не соответствует количеству товара в корзине");
         Assert.assertEquals(cartPage.getItemsCountInCart(), itemsSelectedCount, "Выбранное руками количество товара не соответствует количеству товара на иконке корзины");
+    }
+    @Test(priority = 3, description = "Сверка количества товаров в корзине и счетчика на иконке корзины при удалени товара из корзины, находясь на странице YOUR CART")
+    public void itemCountAfterDeleteFromCart() throws InterruptedException {
+        Integer itemsRemainInCart = 3; //Количество товара, которое должно остаться после удаления товаров в корзине
+        String itemName1 = "Sauce Labs Onesie"; //Добавляемый в корзину товар
+        String itemName2 = "Sauce Labs Fleece Jacket"; //Добавляемый в корзину товар
+        String itemName3 = "Sauce Labs Backpack"; //Добавляемый в корзину товар
+        String itemName4 = "Sauce Labs Bike Light"; //Добавляемый в корзину товар
+        String itemDeleteName = "Sauce Labs Fleece Jacket"; //Удаляемый из корзины товар
+
+        loginPage.open();
+        loginPage.login("standard_user", "secret_sauce");
+        //Добавлил задержку, так периодически не добавляется 4 товара, а меньше
+        Thread.sleep(2000);
+        inventoryPage.addToCart(itemName1);
+        Thread.sleep(2000);
+        inventoryPage.addToCart(itemName2);
+        Thread.sleep(2000);
+        inventoryPage.addToCart(itemName3);
+        Thread.sleep(2000);
+        inventoryPage.addToCart(itemName4);
+
+        cartPage.openCartPage();
+        Thread.sleep(2000);
+        cartPage.deleteItemFromCart(itemDeleteName);
+        //System.out.println(cartPage.getCartLinkCount());
+        //System.out.println(cartPage.getItemsCountInCart());
+        Assert.assertEquals(cartPage.getCartLinkCount(), Integer.toString(itemsRemainInCart), "Оставшееся после удаления количество товара в корзине не соответствует ожидаемому остатку товара");
+        Assert.assertEquals(cartPage.getItemsCountInCart(), itemsRemainInCart, "Оставшееся после удаления количество товара на иконке корзины не соответствует ожидаемому остатку товара");
     }
 }

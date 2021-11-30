@@ -13,6 +13,7 @@ public class CartPage extends BasePage {
     public static final By ITEM_CART_COUNT = By.xpath("//div[@class='cart_item']");
     public static final String ITEM_CART = "//div[@class='cart_item'][%s]//div[@class='inventory_item_name']";
     public static final String PRICE_ITEM_CART = "//div[@class='inventory_item_name' and text()='%s']/../../..//div[@class='inventory_item_price']";
+    public static final String ITEM_CART_REMOVE_BATTON = "//div[@class='inventory_item_name' and text()='%s']/../../..//button";
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -52,5 +53,9 @@ public class CartPage extends BasePage {
     //Метод определения цены товара в корзине
     public String getItemPriceInCart(String itemNameInCart) {
         return driver.findElement(By.xpath(String.format(PRICE_ITEM_CART, itemNameInCart))).getText();
+    }
+    //Метод удаления товара, находясь на странице cart.html
+    public void deleteItemFromCart(String itemNameInCart) {
+        driver.findElement(By.xpath(String.format(ITEM_CART_REMOVE_BATTON, itemNameInCart))).click();
     }
 }
