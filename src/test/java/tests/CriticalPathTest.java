@@ -64,8 +64,9 @@ public class CriticalPathTest extends BaseTest {
         String itemName3 = "Sauce Labs Backpack";
         String itemName4 = "Sauce Labs Bike Light";
 
-        inventoryPage.addToCart(itemName1);
         //Добавлил задержку, так периодически не добавляется 4 товара, а меньше
+        Thread.sleep(2000);
+        inventoryPage.addToCart(itemName1);
         Thread.sleep(2000);
         inventoryPage.addToCart(itemName2);
         Thread.sleep(2000);
