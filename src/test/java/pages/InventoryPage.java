@@ -18,8 +18,8 @@ public class InventoryPage extends BasePage {
 
     //Описываем методы, характерные для страницы
     //Метод определения цены выбранного продукта
-    public void getPriceItem(String itemPrice) {
-        driver.findElement(By.xpath(String.format(PRICE_ITEM, itemPrice))).getText();
+    public String getItemPrice(String itemName) {
+        return driver.findElement(By.xpath(String.format(PRICE_ITEM, itemName))).getText();
     }
 
     //Метод добавления в корзину
