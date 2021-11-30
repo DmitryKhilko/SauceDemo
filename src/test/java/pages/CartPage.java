@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class CartPage extends BasePage {
-
     public static final By HEADER_TITLE_CART = By.xpath("//span[@class='title']");
     public static final By CART_LINK = By.xpath("//a[@class='shopping_cart_link']");
     public static final By CART_LINK_COUNT = By.xpath("//a[@class='shopping_cart_link']//span[@class='shopping_cart_badge']");

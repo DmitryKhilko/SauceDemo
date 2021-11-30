@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class InventoryPage extends BasePage {
-
     //Перечисляем локаторы, которые будут использованы на странице
     //Именовать константы также, как их именуют разработчики в HTML-коде
     public static final By HEADER_TITLE_INVENTORY = By.xpath("//span[@class='title']");

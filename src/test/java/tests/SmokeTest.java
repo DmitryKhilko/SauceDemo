@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SmokeTest extends BaseTest {
-
     @Test(priority = 1, description = "Проверка наличия кнопки меню и наличия всех пунктов меню")
     public void isDisplayedBurgerMenu() throws InterruptedException {
         loginPage.open();

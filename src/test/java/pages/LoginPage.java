@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
-
     //Перечисляем локаторы, которые будут использованы на странице
     //Именовать константы также, как их именуют разработчики в HTML-коде
     public static final By USERNAME_INPUT = By.xpath("//input[@id='user-name']");
@@ -16,7 +15,6 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-
     //Описываем методы, характерные для страницы
     //Метод открытия страницы
     public void open() {

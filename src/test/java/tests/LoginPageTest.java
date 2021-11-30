@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends BaseTest {
-
     @Test(priority = 1, description = "Вход в программу с корректными логином и паролем")
     public void loginCorrectUsernameCorrectPassword() {
         loginPage.open();

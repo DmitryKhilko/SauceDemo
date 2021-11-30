@@ -8,16 +8,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class CriticalPathTest extends BaseTest {
-
     @Test(priority = 1, description = "Добавление трёх товаров в корзину")
     public void itemAddToCart() throws InterruptedException {
-
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-
         String itemName1 = "Sauce Labs Onesie";
         String itemName2 = "Sauce Labs Fleece Jacket";
         String itemName3 = "Sauce Labs Backpack";
+
+        loginPage.open();
+        loginPage.login("standard_user", "secret_sauce");
 
         List<String> itemsSelected = new ArrayList<>();
         itemsSelected.add(itemName1);
@@ -55,15 +53,14 @@ public class CriticalPathTest extends BaseTest {
 
     @Test(priority = 2, description = "Сверка количества товаров в корзине и счетчика на иконке корзины")
     public void itemCountInCart() throws InterruptedException {
-
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-
         Integer itemsSelectedCount = 4;
         String itemName1 = "Sauce Labs Onesie";
         String itemName2 = "Sauce Labs Fleece Jacket";
         String itemName3 = "Sauce Labs Backpack";
         String itemName4 = "Sauce Labs Bike Light";
+
+        loginPage.open();
+        loginPage.login("standard_user", "secret_sauce");
 
         //Добавлил задержку, так периодически не добавляется 4 товара, а меньше
         Thread.sleep(2000);
