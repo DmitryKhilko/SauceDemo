@@ -21,9 +21,9 @@ public class CriticalPathTest extends BaseTest {
         String itemName3 = "Sauce Labs Backpack";
 
         List<String> itemsSelected = new ArrayList<>();
-        itemsSelected.add(itemName1+inventoryPage.getItemPrice(itemName1));
-        itemsSelected.add(itemName2+inventoryPage.getItemPrice(itemName2));
-        itemsSelected.add(itemName3+inventoryPage.getItemPrice(itemName3));
+        itemsSelected.add(itemName1 + inventoryPage.getItemPrice(itemName1));
+        itemsSelected.add(itemName2 + inventoryPage.getItemPrice(itemName2));
+        itemsSelected.add(itemName3 + inventoryPage.getItemPrice(itemName3));
         Collections.sort(itemsSelected);
         //System.out.println(itemsSelected);
 
@@ -35,15 +35,15 @@ public class CriticalPathTest extends BaseTest {
         Assert.assertEquals(cartPage.getHeaderTitleText(), "YOUR CART", "Мы не перешли на страницу cart.html");
 
         List<String> itemsInCart = new ArrayList<>();
-        itemsInCart.add(cartPage.getItemNameInCart(1)+cartPage.getItemPriceInCart(1));
-        itemsInCart.add(cartPage.getItemNameInCart(2)+cartPage.getItemPriceInCart(2));
-        itemsInCart.add(cartPage.getItemNameInCart(3)+cartPage.getItemPriceInCart(3));
+        itemsInCart.add(cartPage.getItemNameInCart(1) + cartPage.getItemPriceInCart(1));
+        itemsInCart.add(cartPage.getItemNameInCart(2) + cartPage.getItemPriceInCart(2));
+        itemsInCart.add(cartPage.getItemNameInCart(3) + cartPage.getItemPriceInCart(3));
         Collections.sort(itemsInCart);
         //System.out.println(itemsInCart);
 
-        Assert.assertEquals(itemsInCart.get(0),itemsSelected.get(0),"Выбранного товара нет в корзине");
-        Assert.assertEquals(itemsInCart.get(1),itemsSelected.get(1),"Выбранного товара нет в корзине");
-        Assert.assertEquals(itemsInCart.get(2),itemsSelected.get(2),"Выбранного товара нет в корзине");
+        Assert.assertEquals(itemsInCart.get(0), itemsSelected.get(0), "Выбранного товара нет в корзине");
+        Assert.assertEquals(itemsInCart.get(1), itemsSelected.get(1), "Выбранного товара нет в корзине");
+        Assert.assertEquals(itemsInCart.get(2), itemsSelected.get(2), "Выбранного товара нет в корзине");
     }
 
     @Test(priority = 2, description = "positive")
@@ -69,7 +69,7 @@ public class CriticalPathTest extends BaseTest {
 
         //System.out.println(cartPage.getCartLinkCount());
         //System.out.println(cartPage.getItemsCountInCart());
-        Assert.assertEquals(cartPage.getCartLinkCount(),Integer.toString(itemsSelectedCount),"Выбранное руками количество товара не соответствует количеству товара в корзине");
-        Assert.assertEquals(cartPage.getItemsCountInCart(),itemsSelectedCount,"Выбранное руками количество товара не соответствует количеству товара на иконке корзины");
+        Assert.assertEquals(cartPage.getCartLinkCount(), Integer.toString(itemsSelectedCount), "Выбранное руками количество товара не соответствует количеству товара в корзине");
+        Assert.assertEquals(cartPage.getItemsCountInCart(), itemsSelectedCount, "Выбранное руками количество товара не соответствует количеству товара на иконке корзины");
     }
 }
