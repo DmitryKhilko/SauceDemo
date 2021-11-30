@@ -26,8 +26,9 @@ public class CriticalPathTest extends BaseTest {
         Collections.sort(itemsSelected);
         //System.out.println(itemsSelected);
 
-        inventoryPage.addToCart(itemName1);
         //Добавлил задержку, так периодически не добавляется 3 товара, а только 2
+        Thread.sleep(2000);
+        inventoryPage.addToCart(itemName1);
         Thread.sleep(2000);
         inventoryPage.addToCart(itemName2);
         Thread.sleep(2000);
