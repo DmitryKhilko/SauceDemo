@@ -99,7 +99,7 @@ public class CriticalPathTest extends BaseTest {
         inventoryPage.addToCart(itemName4);
 
         cartPage.openCartPage();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         cartPage.deleteItemFromCart(itemDeleteName);
         //System.out.println(cartPage.getCartLinkCount());
         //System.out.println(cartPage.getItemsCountInCart());
