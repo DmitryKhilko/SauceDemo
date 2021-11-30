@@ -7,10 +7,9 @@ public class InventoryPage extends BasePage {
 
     //Перечисляем локаторы, которые будут использованы на странице
     //Именовать константы также, как их именуют разработчики в HTML-коде
-    public static final By HEADER_TITLE = By.xpath("//span[@class='title']");
+    public static final By HEADER_TITLE_INVENTORY = By.xpath("//span[@class='title']");
     public static final String ADD_ITEM_BUTTONS = "//div[div[a[div[@class='inventory_item_name' and text() ='%s']]]]//button";
     public static final String PRICE_ITEM = "//div[div[a[div[@class='inventory_item_name' and text() ='%s']]]]//div[@class='inventory_item_price']";
-    public static final By CART_LINK = By.xpath("//a[@class='shopping_cart_link']");
 
     //Создаем конструктор, который позволит при создании класса InventoryPage назначать ему driver
     public InventoryPage(WebDriver driver) {
@@ -18,14 +17,9 @@ public class InventoryPage extends BasePage {
     }
 
     //Описываем методы, характерные для страницы
-    //Метод открытия страницы cart.html
-    public void openCart() {
-        driver.findElement(CART_LINK).click();
-    }
-
     //Метод определения цены выбранного продукта
-    public void getPriceItem(String itemPrice) {
-        driver.findElement(By.xpath(String.format(PRICE_ITEM, itemPrice))).getText();
+    public String getItemPrice(String itemName) {
+        return driver.findElement(By.xpath(String.format(PRICE_ITEM, itemName))).getText();
     }
 
     //Метод добавления в корзину
@@ -40,6 +34,6 @@ public class InventoryPage extends BasePage {
 
     //Метод определения заголовка страницы
     public String getHeaderTitleText() {
-        return driver.findElement(HEADER_TITLE).getText();
+        return driver.findElement(HEADER_TITLE_INVENTORY).getText();
     }
 }
