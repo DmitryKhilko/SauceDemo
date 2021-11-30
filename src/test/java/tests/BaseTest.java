@@ -28,7 +28,7 @@ public class BaseTest {
         options.addArguments("--headless"); // Хром запущен без UI - тесты ускоряются и становятся более стабильными
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //Инициализация страниц, с которыми мы будем работать в тестах
         loginPage = new LoginPage(driver);

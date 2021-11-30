@@ -12,11 +12,11 @@ public class SmokeTest extends BaseTest {
 
         burgerMenuPage.openBurgerMenu();
         //Добавлил задержку, так как меню открывается с задержкой после нажатия на кнопку BurgerMenu
-        Thread.sleep(2000);
-        Assert.assertTrue(burgerMenuPage.getDisplayedBMItemInventory(), "Не отображается пункт меню ALL ITEMS");
-        Assert.assertTrue(burgerMenuPage.getDisplayedBMItemAbout(), "Не отображается пункт меню ABOUT");
-        Assert.assertTrue(burgerMenuPage.getDisplayedBMItemLogout(), "Не отображается пункт меню LOGOUT");
-        Assert.assertTrue(burgerMenuPage.getDisplayedBMItemReset(), "Не отображается пункт меню RESET APP STATE");
+        Thread.sleep(1000);
+        Assert.assertEquals(burgerMenuPage.getItemsBM().get(0), "ALL ITEMS", "Не отображается пункт меню ALL ITEMS");
+        Assert.assertEquals(burgerMenuPage.getItemsBM().get(1), "ABOUT", "Не отображается пункт меню ABOUT");
+        Assert.assertEquals(burgerMenuPage.getItemsBM().get(2), "LOGOUT", "Не отображается пункт меню LOGOUT");
+        Assert.assertEquals(burgerMenuPage.getItemsBM().get(3), "RESET APP STATE", "Не отображается пункт меню RESET APP STATE");
     }
 
     @Test(priority = 2, description = "Проверка работоспособности пункта меню LOGOUT")

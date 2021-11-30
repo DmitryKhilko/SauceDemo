@@ -2,6 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class BurgerMenuPage extends BasePage {
@@ -26,24 +31,12 @@ public class BurgerMenuPage extends BasePage {
         driver.findElement(BURGER_MENU_BUTTON).click();
     }
 
-    //Метод проверки видимости пункта меню ALL ITEMS
-    public Boolean getDisplayedBMItemInventory() {
-        return driver.findElement(BM_ITEM_INVENTORY).isDisplayed();
-    }
-
-    //Метод проверки видимости пункта меню ABOUT
-    public Boolean getDisplayedBMItemAbout() {
-        return driver.findElement(BM_ITEM_ABOUT).isDisplayed();
-    }
-
-    //Метод проверки видимости пункта меню LOGOUT
-    public Boolean getDisplayedBMItemLogout() {
-        return driver.findElement(BM_ITEM_LOGOUT).isDisplayed();
-    }
-
-    //Метод проверки видимости пункта меню RESET APP STATE
-    public Boolean getDisplayedBMItemReset() {
-        return driver.findElement(BM_ITEM_RESET).isDisplayed();
+    //Метод, который пункты меню заносит в List
+    public List<String> getItemsBM() {
+        List<WebElement> itemsBM = driver.findElements(BM_ITEMS);
+        List<String> itemsMenuBM = new ArrayList<>();
+        for (WebElement webElement : itemsBM) itemsMenuBM.add(webElement.getText());
+        return itemsMenuBM;
     }
 
     //Метод открытия кнопки меню

@@ -8,6 +8,8 @@ public class InventoryPage extends BasePage {
     //Именовать константы также, как их именуют разработчики в HTML-коде
     public static final By HEADER_TITLE_INVENTORY = By.xpath("//span[@class='title']");
     public static final String ADD_ITEM_BUTTONS = "//div[div[a[div[@class='inventory_item_name' and text() ='%s']]]]//button";
+    //%s - это подстановка, потом вместо данной переменной будет подставляться название товара
+    //Потом это вставится в конструкцию String.format(ADD_ITEM_BUTTONS, itemName), где itemName - название товара
     public static final String PRICE_ITEM = "//div[div[a[div[@class='inventory_item_name' and text() ='%s']]]]//div[@class='inventory_item_price']";
 
     //Создаем конструктор, который позволит при создании класса InventoryPage назначать ему driver
@@ -24,11 +26,6 @@ public class InventoryPage extends BasePage {
     //Метод добавления в корзину
     public void addToCart(String itemName) {
         driver.findElement(By.xpath(String.format(ADD_ITEM_BUTTONS, itemName))).click();
-    }
-
-    //Метод удаления с корзины не выходя со страницы
-    public void removeFromCart() {
-
     }
 
     //Метод определения заголовка страницы
