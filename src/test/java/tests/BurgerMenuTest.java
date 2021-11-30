@@ -3,7 +3,7 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BurgerMenuTest extends BaseTest{
+public class BurgerMenuTest extends BaseTest {
 
     @Test(priority = 1, description = "positive")
     public void isDisplayedBurgerMenu() {

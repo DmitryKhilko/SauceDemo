@@ -24,7 +24,6 @@ public class BurgerMenuPage extends BasePage {
     //Метод открытия кнопки меню
     public void openBurgerMenu() {
         driver.findElement(BURGER_MENU_BUTTON).click();
-
     }
 
     //Метод проверки видимости пункта меню ALL ITEMS
