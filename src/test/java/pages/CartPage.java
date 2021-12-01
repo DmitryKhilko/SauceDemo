@@ -62,7 +62,10 @@ public class CartPage extends BasePage {
         List<WebElement> itemsCart = driver.findElements(ITEMS_CART);
         List<String> itemsInCart = new ArrayList<>();
         for (WebElement webElement : itemsCart) itemsInCart.add(webElement.getText());
+        //Сортировка по возрастанию
         Collections.sort(itemsInCart);
+        //Сортировка по убыванию
+        //itemsInCart.sort(Collections.reverseOrder());
         return itemsInCart;
     }
 }

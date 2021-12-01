@@ -15,6 +15,7 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+
     //Описываем методы, характерные для страницы
     //Метод открытия страницы
     public void open() {

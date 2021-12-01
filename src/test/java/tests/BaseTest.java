@@ -20,6 +20,11 @@ public class BaseTest {
     CartPage cartPage;
     BurgerMenuPage burgerMenuPage;
 
+    //Товары, которые добавляем в корзину
+    String itemName1 = "Sauce Labs Onesie"; //Добавляемый в корзину товар
+    String itemName2 = "Sauce Labs Backpack"; //Добавляемый в корзину товар
+    String itemName3 = "Sauce Labs Fleece Jacket"; //Добавляемый в корзину товар
+
     @BeforeMethod
     public void setUp() {
         //Инициализация webdriver
@@ -39,6 +44,6 @@ public class BaseTest {
 
     @AfterMethod
     public void closeBrowser() {
-        driver.quit();
+       driver.quit();
     }
 }
