@@ -101,7 +101,7 @@ public class InventoryPage extends BasePage {
         List<Double> pricesInInventory = new ArrayList<>();
         // Что я делаю тут: "Double.parseDouble(webElement.getText().substring(1))"
         //На сайте цены даны в виде текста $9.99. Мне данный текст нужно конвертировать в дробное число (Double):
-        //1. "webElement.getText().substring(1)" - я отбразываю "$"
+        //1. "webElement.getText().substring(1)" - я отбрасываю "$"
         //2. "Double.parseDouble(" - преобразую текст "9.99" в дробное число 9,99
         for (WebElement webElement : pricesInventory) pricesInInventory.add(Double.parseDouble(webElement.getText().substring(1)));
         pricesInInventory.sort(Collections.reverseOrder()); //Сортировка по убыванию

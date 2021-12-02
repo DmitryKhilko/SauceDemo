@@ -33,6 +33,7 @@ public class BaseTest {
         options.addArguments("--headless"); // Хром запущен без UI - тесты ускоряются и становятся более стабильными
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
+        // 10 - максимум. Это сколько пользователь ждет до появление элекмента. В среднем 2-3 секунды, дальше уже некомфортно
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //Инициализация страниц, с которыми мы будем работать в тестах
