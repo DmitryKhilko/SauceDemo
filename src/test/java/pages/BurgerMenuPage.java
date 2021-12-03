@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 public class BurgerMenuPage extends BasePage {
     public static final By BURGER_MENU_BUTTON = By.xpath("//button[@id='react-burger-menu-btn']");
     public static final By BM_ITEMS = By.xpath("//nav[@class='bm-item-list']//a[@class='bm-item menu-item']");
-    public static final By BM_ITEM_INVENTORY = By.xpath("//a[@id='inventory_sidebar_link']");
+    //public static final By BM_ITEM_INVENTORY = By.xpath("//a[@id='inventory_sidebar_link']");
     //public static final By BM_ITEM_ABOUT = By.xpath("//a[@id='about_sidebar_link']");
     public static final By BM_ITEM_LOGOUT = By.xpath("//a[@id='logout_sidebar_link']");
     //public static final By BM_ITEM_RESET = By.xpath("//a[@id='reset_sidebar_link']");
