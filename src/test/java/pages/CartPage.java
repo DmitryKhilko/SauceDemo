@@ -10,7 +10,6 @@ import java.util.List;
 
 public class CartPage extends BasePage {
     public static final By HEADER_TITLE_CART = By.xpath("//span[@class='title']");
-    public static final By CART_LINK = By.xpath("//a[@class='shopping_cart_link']");
     public static final By CART_LINK_COUNT = By.xpath("//a[@class='shopping_cart_link']//span[@class='shopping_cart_badge']");
     public static final By ITEM_CART_COUNT = By.xpath("//div[@class='cart_item']");
     public static final By ITEMS_CART = By.xpath("//div[@class='cart_list']//div[@class='inventory_item_name']");
@@ -19,16 +18,6 @@ public class CartPage extends BasePage {
 
     public CartPage(WebDriver driver) {
         super(driver);
-    }
-
-    //Метод определения видимости иконки корзины на текущей странице
-    public Boolean getDisplayedCartLink() {
-        return driver.findElement(CART_LINK).isDisplayed();
-    }
-
-    //Метод открытия страницы cart.html
-    public void openCartPage() {
-        driver.findElement(CART_LINK).click();
     }
 
     //Метод определения заголовка страницы cart.html
@@ -64,8 +53,13 @@ public class CartPage extends BasePage {
         for (WebElement webElement : itemsCart) itemsInCart.add(webElement.getText());
         //Сортировка по возрастанию
         Collections.sort(itemsInCart);
-        //Сортировка по убыванию
-        //itemsInCart.sort(Collections.reverseOrder());
         return itemsInCart;
     }
+
+    //Метод, который вычисляет остаток товаров в корзине
+    public int getRemainItemsCart() {
+        return driver.findElements(ITEMS_CART).size();
+    }
+
+
 }
