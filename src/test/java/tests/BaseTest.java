@@ -29,7 +29,7 @@ public class BaseTest {
         //Инициализация webdriver
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless"); // Хром запущен без UI. Тесты ускоряются и становятся более стабильными
+        //options.addArguments("--headless"); // Хром запущен без UI. Тесты ускоряются и становятся более стабильными
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         // Ожидание, указывающее на то какое максимальное количество времени Selenium будет дожидаться появления элемента.
