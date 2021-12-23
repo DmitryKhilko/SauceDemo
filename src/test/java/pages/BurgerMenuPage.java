@@ -15,6 +15,7 @@ public class BurgerMenuPage extends BasePage {
     //public static final By BM_ITEM_ABOUT = By.xpath("//a[@id='about_sidebar_link']");
     public static final By BM_ITEM_LOGOUT = By.xpath("//a[@id='logout_sidebar_link']");
     //public static final By BM_ITEM_RESET = By.xpath("//a[@id='reset_sidebar_link']");
+    public static final By CART_LINK = By.xpath("//a[@class='shopping_cart_link']");
 
     public BurgerMenuPage(WebDriver driver) {
         super(driver);
@@ -42,4 +43,15 @@ public class BurgerMenuPage extends BasePage {
     public void selectBMItemLogout() {
         driver.findElement(BM_ITEM_LOGOUT).click();
     }
+
+    //Метод определения видимости иконки корзины на текущей странице
+    public Boolean getDisplayedCartLink() {
+        return driver.findElement(CART_LINK).isDisplayed();
+    }
+
+    //Метод перехода на страницу cart.html кликом по иконке корзины
+    public void openCartPage() {
+        driver.findElement(CART_LINK).click();
+    }
+
 }

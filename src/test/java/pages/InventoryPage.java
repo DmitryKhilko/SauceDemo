@@ -103,10 +103,11 @@ public class InventoryPage extends BasePage {
         //На сайте цены даны в виде текста $9.99. Мне данный текст нужно конвертировать в дробное число (Double):
         //1. "webElement.getText().substring(1)" - я отбрасываю "$"
         //2. "Double.parseDouble(" - преобразую текст "9.99" в дробное число 9,99
-        for (WebElement webElement : pricesInventory) pricesInInventory.add(Double.parseDouble(webElement.getText().substring(1)));
+        for (WebElement webElement : pricesInventory)
+            pricesInInventory.add(Double.parseDouble(webElement.getText().substring(1)));
         pricesInInventory.sort(Collections.reverseOrder()); //Сортировка по убыванию
         //А потом мы возвращаем цену к виду "$9.99", чтобы сравнить с ценой первого товара на сайте
-        return "$"+pricesInInventory.get(0);
+        return "$" + pricesInInventory.get(0);
     }
 
     //Метод, который выбирает на странице PRODUCT сортировку товара: Price (low to high)
@@ -118,21 +119,22 @@ public class InventoryPage extends BasePage {
     public String getMinPriceInInventory() {
         List<WebElement> pricesInventory = driver.findElements(PRICES_INVENTORY);
         List<Double> pricesInInventory = new ArrayList<>();
-        for (WebElement webElement : pricesInventory) pricesInInventory.add(Double.parseDouble(webElement.getText().substring(1)));
+        for (WebElement webElement : pricesInventory)
+            pricesInInventory.add(Double.parseDouble(webElement.getText().substring(1)));
         Collections.sort(pricesInInventory); //Сортировка по возрастанию
-        return "$"+pricesInInventory.get(0);
+        return "$" + pricesInInventory.get(0);
     }
 
-//    //Метод, который содержимое страницы inventory.html заносит в List (findElements)
-//    //и List сортирует по возрастанию или убыванию
-//    public List<String> getItemsInventory() {
-//        List<WebElement> itemsInventory = driver.findElements(ITEMS_INVENTORY);
-//        List<String> itemsInInventory = new ArrayList<>();
-//        for (WebElement webElement : itemsInventory) itemsInInventory.add(webElement.getText());
-//        //Сортировка по возрастанию
-//        Collections.sort(itemsInInventory);
-//        //Сортировка по убыванию
-//        //itemsInInventory.sort(Collections.reverseOrder());
-//        return itemsInInventory;
-//    }
+    //Метод, который содержимое страницы inventory.html заносит в List (findElements)
+    //и List сортирует по возрастанию или убыванию
+    public List<String> getItemsInventory() {
+        List<WebElement> itemsInventory = driver.findElements(ITEMS_INVENTORY);
+        List<String> itemsInInventory = new ArrayList<>();
+        for (WebElement webElement : itemsInventory) itemsInInventory.add(webElement.getText());
+        //Сортировка по возрастанию
+        Collections.sort(itemsInInventory);
+        //Сортировка по убыванию
+        //itemsInInventory.sort(Collections.reverseOrder());
+        return itemsInInventory;
+    }
 }

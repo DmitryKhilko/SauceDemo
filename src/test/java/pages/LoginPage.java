@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
     //Описываем методы, характерные для страницы
     //Метод открытия страницы
     public void open() {
-        driver.get("https://www.saucedemo.com/");
+        driver.get(BASE_URL);
     }
 
     //Метод проверки существования кнопки LOGIN (убедимся, что мы попали на ту страницу, которую надо по наличию кнопки)
