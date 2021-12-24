@@ -39,7 +39,7 @@ public class CriticalPathTest extends BaseTest {
         Assert.assertEquals(cartPage.getItemPriceInCart(cartPage.getItemsCart().get(2)), inventoryPage.getItemPrice(itemsSelected.get(2)), "Цена выбранного товара не совпадает с ценой соответствующего товара в корзине");
     }
 
-    @Test(priority = 1, description = "Добавление трёх товаров в корзину")
+    @Test(priority = 2, description = "Удаление товаров из корзины")
     public void deleteAllItemFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

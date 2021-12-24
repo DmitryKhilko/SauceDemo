@@ -9,7 +9,8 @@ public class LoginPageTest extends BaseTest {
         loginPage.open();
         Assert.assertEquals(loginPage.getLoginButtonValue(), "LOGIN", "Кнопки LOGIN нет на странице. Мы попали не на ту страницу!");
 
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login("standard_user", System.getProperty("testProp")); // для запуска тестов с передачей параметра mvn  clean test -Dtest=LoginPageTest -DtestProp=secret_sauce
+
         Assert.assertEquals(inventoryPage.getHeaderTitleText(), "PRODUCTS", "Мы не перешли на страницу inventory.html");
     }
 
