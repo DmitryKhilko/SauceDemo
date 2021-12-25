@@ -1,6 +1,7 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,12 +25,13 @@ public class BaseTest {
     public static final String ITEM_NAME2 = "Sauce Labs Backpack"; //Добавляемый в корзину товар
     public static final String ITEM_NAME3 = "Sauce Labs Fleece Jacket"; //Добавляемый в корзину товар
 
+    @Step ("Открыть Chrome")
     @BeforeMethod
     public void setUp() {
         //Инициализация webdriver
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless"); // Хром запущен без UI. Тесты ускоряются и становятся более стабильными
+        options.addArguments("--headless"); // Хром запущен без UI. Тесты ускоряются и становятся более стабильными
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         // Ожидание, указывающее на то какое максимальное количество времени Selenium будет дожидаться появления элемента.
@@ -46,7 +48,7 @@ public class BaseTest {
         cartPage = new CartPage(driver);
         burgerMenuPage = new BurgerMenuPage(driver);
     }
-
+    @Step ("Закрыть браузер")
     @AfterMethod
     public void closeBrowser() {
         driver.quit();

@@ -20,7 +20,22 @@
         <p> [INFO] Total time:  21.989 s</p>
         <p> [INFO] Finished at: 2021-12-24T01:27:08+03:00</p>
         <p> [INFO] ------------------------------------------------------------------------</p>
-       
+   
+   <h1>Запуск тестов с помощью Mavev из файла regression.xml с передачей параметра в один из тестов</h1>
+        <p> Ввести команду в окне терминала для запуска тестов:  mvn clean test -DtestProp=secret_sauce -DsuiteXmlFile='src/test/resources/regression.xml'</p>
+        <p> где -DtestProp=secret_sauce - параметр (пароль), передаваемый в тест loginCorrectUsernameCorrectPassword()</p>
+        <p> Получим результат выполнения тестов:  </p>
+        <p> Results :</p>
+        <p>  Tests run: 15, Failures: 0, Errors: 0, Skipped: 0</p>
+        <p> [INFO] ------------------------------------------------------------------------</p>
+        <p> [INFO] BUILD SUCCESS</p>
+        <p> [INFO] ------------------------------------------------------------------------</p>
+        <p> [INFO] Total time:  38.395 s s</p>
+        <p> [INFO] Finished at: 2021-12-24T22:47:05+03:00</p>
+        <p> [INFO] ------------------------------------------------------------------------</p>
+
+mvn clean test -DtestProp=secret_sauce -DsuiteXmlFile='src/test/resources/regression.xml'
+
 
    <h1>Чек лист для приложения www.saucedemo.com</h1>  
       <h2>Страница LoginPage</h2>
