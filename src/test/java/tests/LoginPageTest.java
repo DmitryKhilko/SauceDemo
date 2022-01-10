@@ -1,9 +1,14 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.TmsLink;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.AllureUtils;
 
 public class LoginPageTest extends BaseTest {
+    @TmsLink("8537") // ссылка на тест-кейс в TMS
+    @Description("Тест проверяет возможность входа в SauceDemo с корректными логином и паролем.")
     @Test(priority = 1, description = "Вход в программу с корректными логином и паролем")
     public void loginCorrectUsernameCorrectPassword() {
         loginPage.open();
@@ -12,6 +17,8 @@ public class LoginPageTest extends BaseTest {
         loginPage.login("standard_user", System.getProperty("testProp")); // для запуска тестов с передачей параметра mvn  clean test -Dtest=LoginPageTest -DtestProp=secret_sauce
 
         Assert.assertEquals(inventoryPage.getHeaderTitleText(), "PRODUCTS", "Мы не перешли на страницу inventory.html");
+        //Принудительно выводим скриншот
+        AllureUtils.takeScreenshot(driver);
     }
 
     @Test(priority = 2, description = "Попытка входа в программу с пустым логином и корректным паролем")

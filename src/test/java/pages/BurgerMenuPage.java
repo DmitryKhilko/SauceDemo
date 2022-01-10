@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,11 +23,13 @@ public class BurgerMenuPage extends BasePage {
     }
 
     //Метод определения видимости кнопки меню на текущей странице
+    @Step("Определить видимость кнопки BurgerMenu на текущей странице")
     public Boolean getDisplayedBurgerMenu() {
         return driver.findElement(BURGER_MENU_BUTTON).isDisplayed();
     }
 
     //Метод открытия кнопки меню
+    @Step("Нажать кнопку BurgerMenu для отображения меню приложения SauceDemo")
     public void openBurgerMenu() {
         driver.findElement(BURGER_MENU_BUTTON).click();
     }
@@ -39,17 +42,20 @@ public class BurgerMenuPage extends BasePage {
         return itemsMenuBM;
     }
 
-    //Метод открытия кнопки меню
+    //Метод открытия пункта меню LOGOUT
+    @Step("Выбрать пункт меню LOGOUT")
     public void selectBMItemLogout() {
         driver.findElement(BM_ITEM_LOGOUT).click();
     }
 
     //Метод определения видимости иконки корзины на текущей странице
+    @Step("Определить видимость иконки корзины на текущей странице")
     public Boolean getDisplayedCartLink() {
         return driver.findElement(CART_LINK).isDisplayed();
     }
 
     //Метод перехода на страницу cart.html кликом по иконке корзины
+    @Step("Перейти в корзину с помощью клика по иконке корзины")
     public void openCartPage() {
         driver.findElement(CART_LINK).click();
     }

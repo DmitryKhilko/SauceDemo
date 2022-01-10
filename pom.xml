@@ -19,6 +19,7 @@
         <selenium.version>3.141.59</selenium.version>
         <bonigarcia.version>5.0.0</bonigarcia.version>
         <aspectjweaver.version>1.9.7</aspectjweaver.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
