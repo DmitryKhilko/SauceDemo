@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.AllureUtils;
 
 public class ExtendedTest extends BaseTest {
 
@@ -18,6 +19,7 @@ public class ExtendedTest extends BaseTest {
         //System.out.println(cartPage.getItemsCountInCart());
         Assert.assertEquals(cartPage.getCartLinkCount(), "2", "Выбранное руками количество товара не соответствует количеству товара в корзине");
         Assert.assertEquals(cartPage.getItemsCountInCart(), Integer.valueOf(2), "Выбранное руками количество товара не соответствует количеству товара на иконке корзины");
+        AllureUtils.takeScreenshot(driver);
     }
 
     @Test(priority = 2, description = "Сверка количества товаров в корзине и счетчика на иконке корзины при удалени товара из корзины, находясь на странице YOUR CART")

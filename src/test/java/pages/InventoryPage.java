@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,32 +30,45 @@ public class InventoryPage extends BasePage {
     }
 
     //Описываем методы, характерные для страницы
+
+    //Метод открытия страницы
+    @Step("Открыть страницу https://www.saucedemo.com/inventory.html")
+    public void open() {
+        driver.get(INVENTORY_URL);
+    }
+
     //Метод определения заголовка страницы
+    @Step("Определить заголовок страницы")
     public String getHeaderTitleText() {
         return driver.findElement(HEADER_TITLE_INVENTORY).getText();
     }
 
     //Метод, который определяет первый товар на странице PRODUCT
+    @Step("Определить название первого товара на странице")
     public String getFirstItemInventory() {
         return driver.findElements(FIRST_ITEM_INVENTORY).get(0).getText();
     }
 
     //Метод, который определяет цену первого товара на странице PRODUCT
+    @Step("Определить цену первого товара на странице")
     public String getPriceFirstItemInventory() {
         return driver.findElements(PRICE_FIRST_ITEM_INVENTORY).get(0).getText();
     }
 
     //Метод определения цены выбранного продукта по имени товара
+    @Step("Определить цену выбранного товара по его имени")
     public String getItemPrice(String itemName) {
         return driver.findElement(By.xpath(String.format(PRICE_ITEM, itemName))).getText();
     }
 
     //Метод добавления в корзину
+    @Step("Добавить выбранный товар в корзину")
     public void addToCart(String itemName) {
         driver.findElement(By.xpath(String.format(ADD_ITEM_BUTTONS, itemName))).click();
     }
 
     //Метод, который выбирает на странице PRODUCT сортировку товара: A TO Z
+    @Step("Выбрать из раскрывающегося списка сотрировку товаров: A TO Z")
     public void sortItemInventoryAZ() {
         Select dropDownSort = new Select(driver.findElement(PRODUCT_SORT_CONTAINER));
         dropDownSort.selectByIndex(0);
@@ -64,6 +78,7 @@ public class InventoryPage extends BasePage {
     //1. содержимое страницы inventory.html заносит в List (findElements)
     //2. сортирует List сортирует (A TO Z)
     //3. выдает первый элемент List для последующего сравнения с первым элементом на странице PRODUCT после ее сортировки
+    @Step("Проверить правильность сортировки товаров 'A TO Z'")
     public String getFirstItemAZ() {
         List<WebElement> itemsInventory = driver.findElements(ITEMS_INVENTORY);
         List<String> itemsInInventory = new ArrayList<>();
@@ -73,12 +88,14 @@ public class InventoryPage extends BasePage {
     }
 
     //Метод, который выбирает на странице PRODUCT сортировку товара: Z TO A
+    @Step("Выбрать из раскрывающегося списка сотрировку товаров: Z TO A")
     public void sortItemInventoryZA() {
         Select dropDownSort = new Select(driver.findElement(PRODUCT_SORT_CONTAINER));
         dropDownSort.selectByIndex(1);
     }
 
     //Метод, который позволяет проверить правильность сортировки: Z TO A
+    @Step("Проверить правильность сортировки товаров 'Z TO A'")
     public String getFirstItemZA() {
         List<WebElement> itemsInventory = driver.findElements(ITEMS_INVENTORY);
         List<String> itemsInInventory = new ArrayList<>();
@@ -88,6 +105,7 @@ public class InventoryPage extends BasePage {
     }
 
     //Метод, который выбирает на странице PRODUCT сортировку товара: Price (high to low)
+    @Step("Выбрать из раскрывающегося списка сотрировку товаров: Price (high to low)")
     public void sortItemInventoryHiLo() {
         Select dropDownSort = new Select(driver.findElement(PRODUCT_SORT_CONTAINER));
         dropDownSort.selectByIndex(3);
@@ -96,6 +114,7 @@ public class InventoryPage extends BasePage {
     //Метод, который позволяет проверить правильность сортировки: Price (high to low)
     //Все цены загоняет в List, преобразует их в дробные числа, сортирует по убыванию,
     //выводит самую большую цену, преобразованную опять в формат сайта - "$9.99"
+    @Step("Проверить правильность сортировки товаров 'Price (high to low)'")
     public String getMaxPriceInInventory() {
         List<WebElement> pricesInventory = driver.findElements(PRICES_INVENTORY);
         List<Double> pricesInInventory = new ArrayList<>();
@@ -111,11 +130,13 @@ public class InventoryPage extends BasePage {
     }
 
     //Метод, который выбирает на странице PRODUCT сортировку товара: Price (low to high)
+    @Step("Выбрать из раскрывающегося списка сотрировку товаров: Price (low to high)")
     public void sortItemInventoryLoHi() {
         Select dropDownSort = new Select(driver.findElement(PRODUCT_SORT_CONTAINER));
         dropDownSort.selectByIndex(2);
     }
-
+    //Метод, который позволяет проверить правильность сортировки: Price (low to high)
+    @Step("Проверить правильность сортировки товаров 'Price (low to high)'")
     public String getMinPriceInInventory() {
         List<WebElement> pricesInventory = driver.findElements(PRICES_INVENTORY);
         List<Double> pricesInInventory = new ArrayList<>();
@@ -127,6 +148,7 @@ public class InventoryPage extends BasePage {
 
     //Метод, который содержимое страницы inventory.html заносит в List (findElements)
     //и List сортирует по возрастанию или убыванию
+    @Step("Отсортировать список товаров на странице по возрастанию")
     public List<String> getItemsInventory() {
         List<WebElement> itemsInventory = driver.findElements(ITEMS_INVENTORY);
         List<String> itemsInInventory = new ArrayList<>();

@@ -10,7 +10,7 @@
         <p> При необходимости обновить версии библиотек введите в окне терминала команду: mvn versions:use-latest-versions</p>
 
    <h1>Запуск тестов с помощью Mavev</h1>
-        <p> Ввести команду в окне терминала для запуска тестов:  mvn -Dtest=LoginPageTest clean test</p>
+        <p> Ввести команду в окне терминала для запуска тестов:   mvn clean test -Dtest=LoginPageTest -DtestProp=secret_sauce</p>
         <p> Получим результат выполнения тестов:  </p>
         <p> Results :</p>
         <p> Tests run: 5, Failures: 0, Errors: 0, Skipped: 0</p>
@@ -33,9 +33,6 @@
         <p> [INFO] Total time:  38.395 s s</p>
         <p> [INFO] Finished at: 2021-12-24T22:47:05+03:00</p>
         <p> [INFO] ------------------------------------------------------------------------</p>
-
-mvn clean test -DtestProp=secret_sauce -DsuiteXmlFile='src/test/resources/regression.xml'
-
 
    <h1>Чек лист для приложения www.saucedemo.com</h1>  
       <h2>Страница LoginPage</h2>
