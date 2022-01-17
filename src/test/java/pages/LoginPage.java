@@ -1,9 +1,11 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 
+@Log4j2
 public class LoginPage extends BasePage {
     //Перечисляем локаторы, которые будут использованы на странице
     //Именовать константы также, как их именуют разработчики в HTML-коде
@@ -13,7 +15,7 @@ public class LoginPage extends BasePage {
     public static final By ERROR_MESSAGE = By.xpath("//div[@class='error-message-container error']");
 
     //Создаем конструктор, который позволит при создании класса LoginPage назначать ему driver
-    public LoginPage(WebDriver driver) {
+    public LoginPage(ITestContext driver) {
         super(driver);
     }
 
@@ -21,12 +23,14 @@ public class LoginPage extends BasePage {
     //Метод открытия страницы
     @Step("Открыть стартовую страницу приложения SauceDemo https://www.saucedemo.com")
     public void open() {
+        log.debug("Тест " + context.getAttribute("testName") + ": открыть страницу " + BASE_URL);
         driver.get(BASE_URL);
     }
 
     //Метод проверки существования кнопки LOGIN (убедимся, что мы попали на ту страницу, которую надо по наличию кнопки)
     @Step("Проверить существование кнопки LOGIN на стартовой странице приложения SauceDemo")
     public String getLoginButtonValue() {
+        log.debug("Тест " + context.getAttribute("testName") + ": проверить существование кнопки LOGIN на стартовой странице приложения SauceDemo");
         return driver.findElement(LOGIN_BUTTON).getAttribute("value").toUpperCase();
     }
 
@@ -34,17 +38,16 @@ public class LoginPage extends BasePage {
     //@Step("Войти в приложение SauceDemo под пользователем '{userName}' и паролем '{password}'")
     @Step("Войти в приложение SauceDemo")
     public void login(String userName, String password) {
-        //ввод имени пользователя
-        driver.findElement(USERNAME_INPUT).sendKeys(userName);
-        //ввод пароля
-        driver.findElement(PASSWORD_INPUT).sendKeys(password);
-        //нажатие кнопки LOGIN
-        driver.findElement(LOGIN_BUTTON).click();
+        log.debug("Тест " + context.getAttribute("testName") + ": войти в приложение SauceDemo");
+        driver.findElement(USERNAME_INPUT).sendKeys(userName); //ввод имени пользователя
+        driver.findElement(PASSWORD_INPUT).sendKeys(password); //ввод пароля
+        driver.findElement(LOGIN_BUTTON).click(); //нажатие кнопки LOGIN
     }
 
     //Метод проверки вывода сообщения об ошибке
     @Step("Вывести сообщения об ошибке при неудачном входе в приложение SauceDemo")
     public String getErrorMessage() {
+        log.debug("Тест " + context.getAttribute("testName") + ": вывести сообщения об ошибке при неудачном входе в приложение SauceDemo");
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 }

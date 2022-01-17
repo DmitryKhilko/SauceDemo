@@ -10,7 +10,6 @@ public class LocatorsList extends BaseTest {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
 
-
         //id
         driver.findElement(By.id("inventory_container"));
         //name
