@@ -1,11 +1,13 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -13,6 +15,7 @@ import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
+@Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
     WebDriver driver;
@@ -28,7 +31,8 @@ public class BaseTest {
     public static final String ITEM_NAME3 = "Sauce Labs Fleece Jacket"; //Добавляемый в корзину товар
 
     @BeforeMethod (description = "Настроить и открыть браузер")
-    public void setUp(ITestContext context) {
+    public void setUp(ITestContext context, ITestResult result) {
+        log.info("Тест " + result.getMethod().getMethodName() + ": старт");
         //Инициализация webdriver
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -44,14 +48,16 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); //неявное ожидание
         wait = new WebDriverWait(driver, 5); // явное ожидание
         context.setAttribute("driver", driver);
+        context.setAttribute("testName", result.getMethod().getMethodName());
         //Инициализация страниц, с которыми мы будем работать в тестах
-        loginPage = new LoginPage(driver);
-        inventoryPage = new InventoryPage(driver);
-        cartPage = new CartPage(driver);
-        burgerMenuPage = new BurgerMenuPage(driver);
+        loginPage = new LoginPage(context);
+        inventoryPage = new InventoryPage(context);
+        cartPage = new CartPage(context);
+        burgerMenuPage = new BurgerMenuPage(context);
     }
     @AfterMethod (alwaysRun = true, description = "Закрыть браузер")
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
         driver.quit();
+        log.info("Тест " + result.getMethod().getMethodName() + ": завершение");
     }
 }

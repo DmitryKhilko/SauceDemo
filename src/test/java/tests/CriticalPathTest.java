@@ -1,12 +1,15 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.AllureUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Log4j2
 public class CriticalPathTest extends BaseTest {
 
     @Test(priority = 1, description = "Добавление трёх товаров в корзину")
@@ -21,7 +24,6 @@ public class CriticalPathTest extends BaseTest {
         Collections.sort(itemsSelected);
         //System.out.println(itemsSelected);
 
-        //Добавлил задержку, так как часто не все товары добавляются
         inventoryPage.addToCart(ITEM_NAME1);
         inventoryPage.addToCart(ITEM_NAME2);
         inventoryPage.addToCart(ITEM_NAME3);
@@ -37,6 +39,7 @@ public class CriticalPathTest extends BaseTest {
         Assert.assertEquals(cartPage.getItemPriceInCart(cartPage.getItemsCart().get(1)), inventoryPage.getItemPrice(itemsSelected.get(1)), "Цена выбранного товара не совпадает с ценой соответствующего товара в корзине");
         Assert.assertEquals(cartPage.getItemsCart().get(2), itemsSelected.get(2), "Выбранного товара нет в корзине");
         Assert.assertEquals(cartPage.getItemPriceInCart(cartPage.getItemsCart().get(2)), inventoryPage.getItemPrice(itemsSelected.get(2)), "Цена выбранного товара не совпадает с ценой соответствующего товара в корзине");
+        AllureUtils.takeScreenshot(driver); //Принудительно выводим скриншот
     }
 
     @Test(priority = 2, description = "Удаление товаров из корзины")
@@ -54,5 +57,6 @@ public class CriticalPathTest extends BaseTest {
         cartPage.deleteItemFromCart(ITEM_NAME3);
 
         Assert.assertEquals(cartPage.getRemainItemsCart(), 0, "Из корзине не удалены все товары");
+        AllureUtils.takeScreenshot(driver); //Принудительно выводим скриншот
     }
 }
