@@ -11,7 +11,7 @@ import utils.AllureUtils;
 @Log4j2
 public class LoginPageTest extends BaseTest {
     @TmsLink("8537") // ссылка на тест-кейс в TMS
-    @Description("!!!!Тест проверяет возможность входа в SauceDemo с корректными логином и паролем.")
+    @Description("Тест проверяет возможность входа в SauceDemo с корректными логином и паролем.")
     @Test(priority = 1, description = "Вход в программу с корректными логином и паролем")
     public void loginCorrectUsernameCorrectPassword(ITestContext context) {
         loginPage.open();
